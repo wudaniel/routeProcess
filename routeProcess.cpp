@@ -28,18 +28,18 @@ int main()
     {
         if(init(adaptersList))
         {
-            cerr << "程式初始化失敗";
+            cerr << "程式初始化失敗\n";
             ::system("pause");
             return 1;
         }
         menu(adaptersList);
-        cout << "路由設定完畢";
+        cout << "路由設定完畢\n";
         ::system("pause");
         return 0;
     }
     catch(std::exception e)
     {
-        cerr << "程式發生錯誤: " << e.what();
+        cerr << "程式發生錯誤: " << e.what() << '\n';
         ::system("pause");
         return 1;
     }

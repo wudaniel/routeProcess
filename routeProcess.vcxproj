@@ -164,7 +164,7 @@
     <ResourceCompile Include="routeProcess.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Picture\azm53-vz1rx-001.ico" />
+    <Image Include="..\..\..\Github\test\favicon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
