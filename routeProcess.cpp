@@ -35,7 +35,7 @@ int main()
 
 void init(vector<Adapters>& adaptersList)
 {
-    ::system("title Set Route ver.0.7");
+    ::system("title Set Route ver.0.7.51247.6");
     boost::process::system("chcp 950", boost::process::shell/*, boost::process::std_out > boost::process::null*/);
     ::system("cls");
     getAdp(adaptersList);

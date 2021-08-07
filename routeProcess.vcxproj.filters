@@ -32,5 +32,18 @@
     <ClInclude Include="NameSolver.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="routeProcess.rc">
+      <Filter>資源檔</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Picture\azm53-vz1rx-001.ico">
+      <Filter>資源檔</Filter>
+    </Image>
   </ItemGroup>
 </Project>
