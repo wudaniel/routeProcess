@@ -11,7 +11,7 @@
 using namespace std;
 
 bool getAdp(vector<Adapters>&);
-void init(vector<Adapters>&);
+bool init(vector<Adapters>&);
 void menu(vector<Adapters>);
 const string routeLlist[] = {
     "api-umamusume.cygames.jp",
@@ -24,21 +24,33 @@ int main()
 {
     vector<Adapters> adaptersList;
 
-    try {
-        init(adaptersList);
+    try
+    {
+        if(init(adaptersList))
+        {
+            cerr << "程式初始化失敗";
+            ::system("pause");
+            return 1;
+        }
         menu(adaptersList);
+        cout << "路由設定完畢";
+        ::system("pause");
+        return 0;
     }
-    catch(std::exception e) {
-        cout << e.what();
+    catch(std::exception e)
+    {
+        cerr << "程式發生錯誤: " << e.what();
+        ::system("pause");
+        return 1;
     }
 }
 
-void init(vector<Adapters>& adaptersList)
+bool init(vector<Adapters>& adaptersList)
 {
     ::system("title Set Route ver.0.7.51247.6");
     boost::process::system("chcp 950", boost::process::shell/*, boost::process::std_out > boost::process::null*/);
     ::system("cls");
-    getAdp(adaptersList);
+    return getAdp(adaptersList);
 }
 
 void menu(vector<Adapters> adaptersList)
@@ -81,24 +93,30 @@ bool getAdp(vector<Adapters>& adaptersList)
     ULONG ulOutBufLen = sizeof(IP_ADAPTER_INFO);
     pAdapterInfo = new IP_ADAPTER_INFO;
 
-    if(GetAdaptersInfo(pAdapterInfo, &ulOutBufLen) == ERROR_BUFFER_OVERFLOW) {
+    if(GetAdaptersInfo(pAdapterInfo, &ulOutBufLen) == ERROR_BUFFER_OVERFLOW)
+    {
         delete pAdapterInfo;
         pAdapterInfo = new IP_ADAPTER_INFO[ulOutBufLen];
-        if(pAdapterInfo == NULL) {
+        if(pAdapterInfo == NULL)
+        {
             cerr << "Error allocating memory needed to call GetAdaptersinfo\n";
             return 1;
         }
     }
 
-    if((dwRetVal = GetAdaptersInfo(pAdapterInfo, &ulOutBufLen)) == NO_ERROR) {
+    if((dwRetVal = GetAdaptersInfo(pAdapterInfo, &ulOutBufLen)) == NO_ERROR)
+    {
         pAdapter = pAdapterInfo;
-        while(pAdapter) {
+        while(pAdapter)
+        {
             adaptersList.push_back(Adapters(pAdapter));
             pAdapter = pAdapter->Next;
         }
     }
-    else {
-        cerr << "GetAdaptersInfo failed with error: " << dwRetVal << '\n';
+    else
+    {
+        cerr << "取得介面卡資訊發生錯誤: " << dwRetVal << '\n';
+        return 1;
     }
     return 0;
 }
