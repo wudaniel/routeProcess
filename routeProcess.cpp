@@ -17,7 +17,8 @@ const string routeLlist[] = {
     "api-umamusume.cygames.jp",
     "prd-storage-umamusume.akamaized.net",
     "prd-storage-app-umamusume.akamaized.net",
-    "prd-storage-game-umamusume.akamaized.net"
+    "prd-storage-game-umamusume.akamaized.net",
+    "apidgp-gameplayer.games.dmm.com"
 };
 
 int main()
@@ -47,7 +48,7 @@ int main()
 
 bool init(vector<Adapters>& adaptersList)
 {
-    ::system("title Set Route ver.0.7.51247.6");
+    ::system("title Set Route ver.0.8.15543.0");
     boost::process::system("chcp 950", boost::process::shell/*, boost::process::std_out > boost::process::null*/);
     ::system("cls");
     return getAdp(adaptersList);
