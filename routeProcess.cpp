@@ -50,7 +50,7 @@ int main()
 
 bool init(vector<Adapters>& adaptersList)
 {
-    ::system("title Set Route ver.0.8.15543.0");
+    ::system("title Set Route ver.0.9.62957.3");
     boost::process::system("chcp 950", boost::process::shell/*, boost::process::std_out > boost::process::null*/);
     ::system("cls");
     cout << "這是為了讓VPN只經過DMM遊戲的路由設定程式\n";
