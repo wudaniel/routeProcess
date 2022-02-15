@@ -14,11 +14,12 @@ bool getAdp(vector<Adapters>&);
 bool init(vector<Adapters>&);
 void menu(vector<Adapters>);
 const string routeLlist[] = {
-    "api-umamusume.cygames.jp",
+    "api-umamusume.cygames.jp", //umamusume
     "prd-storage-umamusume.akamaized.net",
     "prd-storage-app-umamusume.akamaized.net",
     "prd-storage-game-umamusume.akamaized.net",
-    "apidgp-gameplayer.games.dmm.com"
+    "apidgp-gameplayer.games.dmm.com", //dmm
+    "api-priconne-redive.cygames.jp" //priconne
 };
 
 int main()
@@ -33,6 +34,7 @@ int main()
             ::system("pause");
             return 1;
         }
+
         menu(adaptersList);
         cout << "路由設定完畢\n";
         ::system("pause");
@@ -50,6 +52,15 @@ bool init(vector<Adapters>& adaptersList)
 {
     ::system("title Set Route ver.0.8.15543.0");
     boost::process::system("chcp 950", boost::process::shell/*, boost::process::std_out > boost::process::null*/);
+    ::system("cls");
+    cout << "這是為了讓VPN只經過DMM遊戲的路由設定程式\n";
+    cout << "目前本程式支援以下程式及遊戲:\n";
+    cout << "    1.DMM Game Player/DMM Game Player Beta\n";
+    cout << "    2.公主連結\n";
+    cout << "    3.馬娘\n";
+    cout << "若有任何問題，或希望新增支援項目，請以email聯絡我。\n";
+    cout << "Email: dev@danielwu.tw\n";
+    ::system("pause");
     ::system("cls");
     return getAdp(adaptersList);
 }
